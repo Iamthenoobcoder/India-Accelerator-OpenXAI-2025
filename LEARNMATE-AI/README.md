@@ -1,29 +1,23 @@
-# 📚 LearnAI Template
+# LearnAI - Educational AI Tools
 
-A Next.js template for building educational AI applications! This template provides three powerful learning tools: Flashcard Maker, Quiz Generator, and Ask-Me Study Buddy.
+A Next.js application that provides AI-powered educational tools including flashcards, quizzes, and a study buddy.
 
 ## Features
 
-### 🃏 Flashcard Maker
-- **Smart Flashcards**: Paste your notes and AI creates interactive flashcards
-- **Review Mode**: Flip cards to test your knowledge
-- **Bulk Creation**: Generate multiple flashcards from large text blocks
+- **Flashcard Maker**: Generate flashcards from your notes
+- **Quiz Creator**: Create multiple choice quizzes from text
+- **Study Buddy**: Ask questions and get educational responses
 
-### 📝 Quiz Maker  
-- **Auto Quiz Generation**: Paste text and get a complete quiz
-- **Multiple Choice**: AI generates questions with multiple choice answers
-- **Instant Feedback**: Get immediate results and explanations
+## Setup
 
-### 🤖 Ask-Me Study Buddy
-- **AI Study Partner**: Ask any question and get helpful explanations
-- **Interactive Learning**: Follow-up questions and clarifications
-- **Subject Agnostic**: Works for any topic or subject
+### Prerequisites
 
-## 🚀 Getting Started
+- Node.js 18+ 
+- npm or yarn
 
 ### Installation
 
-1. Navigate to the nextjs-app directory:
+1. Navigate to the project directory:
 ```bash
 cd nextjs-app
 ```
@@ -33,76 +27,68 @@ cd nextjs-app
 npm install
 ```
 
-3. Run the development server:
+3. Start the development server:
 ```bash
 npm run dev
 ```
 
-4. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## 📁 Project Structure
+## AI Features Setup (Optional)
 
-```
-nextjs-app/
-├── app/
-│   ├── api/
-│   │   ├── flashcards/
-│   │   │   └── route.ts          # Flashcard generation endpoint
-│   │   ├── quiz/
-│   │   │   └── route.ts          # Quiz generation endpoint
-│   │   └── study-buddy/
-│   │       └── route.ts          # Study buddy chat endpoint
-│   ├── globals.css               # Global styles
-│   ├── layout.tsx                # Root layout component
-│   └── page.tsx                  # Main interface with all features
-├── package.json                  # Dependencies and scripts
-└── tsconfig.json                 # TypeScript configuration
-```
+The application works with or without Ollama, but for the full AI experience, you'll need to set up Ollama:
 
-## 🎯 How to Use
+### Installing Ollama
 
-### Flashcard Maker
-1. Click on the "Flashcard Maker" tab
-2. Paste your study notes in the text area
-3. Click "Generate Flashcards" 
-4. Review and flip through your generated flashcards
+1. Download and install Ollama from [https://ollama.ai](https://ollama.ai)
 
-### Quiz Maker
-1. Select the "Quiz Maker" tab
-2. Paste the text you want to be quizzed on
-3. Click "Create Quiz"
-4. Answer the multiple choice questions and get instant feedback
-
-### Study Buddy
-1. Go to the "Study Buddy" tab
-2. Type any question you have about your subject
-3. Get detailed explanations and ask follow-up questions
-
-## 🤖 AI Model
-
-This template uses Ollama with the `llama3.2:1b` model for all AI operations. Make sure you have Ollama installed and the model downloaded:
-
+2. Pull the required model:
 ```bash
 ollama pull llama3.2:1b
 ```
 
-## 🎨 Customization
+3. Start Ollama (it runs on localhost:11434 by default)
 
-- Modify the UI in `app/page.tsx`
-- Adjust AI prompts in the API routes
-- Customize styling in `app/globals.css`
-- Add more features by creating new API endpoints
+### Using AI Features
 
-## 🛠 Dependencies
+Once Ollama is running, the application will automatically use AI-powered responses for:
+- Generating flashcards from your notes
+- Creating quizzes from text content
+- Providing study buddy responses
 
-- **Next.js 14**: React framework
-- **TypeScript**: Type safety
-- **Tailwind CSS**: Styling
-- **Ollama**: Local AI model integration
+### Fallback Mode
 
-## 📖 Educational Use Cases
+If Ollama is not running, the application will still work with fallback responses:
+- **Flashcards**: Simple sentence-based flashcard generation
+- **Quiz**: Basic multiple choice questions based on text content
+- **Study Buddy**: Keyword-based educational responses
 
-- **Students**: Create study materials from lecture notes
-- **Teachers**: Generate quizzes and learning aids
-- **Self-learners**: Get AI tutoring on any topic
-- **Exam Prep**: Practice with generated questions and flashcards 
+You'll see a message indicating that Ollama is not running and instructions on how to enable it.
+
+## API Endpoints
+
+- `POST /api/flashcards` - Generate flashcards from notes
+- `POST /api/quiz` - Create quizzes from text
+- `POST /api/study-buddy` - Get study assistance
+
+## Development
+
+The application is built with:
+- Next.js 14
+- TypeScript
+- Tailwind CSS
+- Ollama for AI features
+
+## Troubleshooting
+
+### 500 Error on API Calls
+If you see 500 errors in the console, it likely means Ollama is not running. The application will automatically fall back to basic functionality, but you'll see a message about enabling Ollama for full AI features.
+
+### Ollama Connection Issues
+- Ensure Ollama is running: `ollama serve`
+- Check that the model is downloaded: `ollama list`
+- Verify Ollama is accessible at `http://localhost:11434`
+
+## License
+
+This project is part of the India Accelerator OpenXAI 2025 hackathon. 
